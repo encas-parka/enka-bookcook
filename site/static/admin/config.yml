@@ -38,18 +38,7 @@ collections: # A list of collections the CMS should be able to edit
                 name: 'poids'
                 widget: 'select'
                 options: ['Kg', 'grammes', 'nombre']
-          - label: 'Animaux'
-            name : 'animaux'
-            widget: 'string'
-            # widget: relation
-            - label: 'Quantité'
-              name: 'quantité'
-              widget: 'number'
-              value_type: 'float'
-            - label: 'Poids'
-              name: 'poids'
-              widget: 'select'
-              options: ['Kg', 'grammes', 'nombre']
+
 
   - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Post" # Used in the UI, ie.: "New Post"
