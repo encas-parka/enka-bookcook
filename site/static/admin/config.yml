@@ -5,6 +5,52 @@ media_folder: "site/static/img" # Folder where user uploaded files should go
 public_folder: "img"
 
 collections: # A list of collections the CMS should be able to edit
+  - name: 'recettes'
+    label: 'recettes'
+    label-singular: 'recette'
+    folder: 'recettes'
+    slug: '{{title}}'
+    create: true
+    filter: {field: 'type', 'plat'}
+    fields:
+      - {label: 'Intitulé', name: 'intitulé', widget: 'string'}
+      - {label: 'Spécialité (région)', name: 'spécialité', widget: 'string'}
+      - {label: 'Description', name: 'description', widget: 'string'}
+      - label: 'Ingredients'
+        name: 'ingredients'
+        widget: 'object'
+        fields: 
+          - label: 'Frais (fruits légumes)'
+            name: 'frais'
+            widget: 'list'
+            allow_add: true
+            label_singular: '+'
+            fields: 
+              - label: 'Noms'
+                name: 'noms'
+                widget: 'string'
+                # widget: relation
+              - label: 'Quantité'
+                name: 'quantité'
+                widget: 'number'
+                value_type: 'float'
+              - label: 'Poids'
+                name: 'poids'
+                widget: 'select'
+                options: ['Kg', 'grammes', 'nombre']
+          - label: 'Animaux'
+            name : 'animaux'
+            widget: 'string'
+            # widget: relation
+            - label: 'Quantité'
+              name: 'quantité'
+              widget: 'number'
+              value_type: 'float'
+            - label: 'Poids'
+              name: 'poids'
+              widget: 'select'
+              options: ['Kg', 'grammes', 'nombre']
+
   - name: "post" # Used in routes, ie.: /admin/collections/:slug/edit
     label: "Post" # Used in the UI, ie.: "New Post"
     folder: "site/content/post" # The path to the folder where the documents are stored
